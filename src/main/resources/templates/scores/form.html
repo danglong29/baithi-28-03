@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Thêm/Sửa Điểm Số</title>
 </head>
 <body>
-$END$
+<div th:replace="layout :: content">
+    <h2 th:text="${score.id} ? 'Cập nhật điểm số' : 'Thêm mới điểm số'"></h2>
+    <form th:action="@{/scores/save}" th:object="${score}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label class="form-label">Sinh viên</label>
+            <select class="form-control" th:field="*{student.id}">
+                <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Môn học</label>
+            <select class="form-control" th:field="*{subject.id}">
+                <option th:each="subject : ${subjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Điểm</label>
+            <input type="number" class="form-control" th:field="*{score}" step="0.1" min="0" max="10" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Lưu</button>
+        <a href="/scores" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
 </body>
 </html>

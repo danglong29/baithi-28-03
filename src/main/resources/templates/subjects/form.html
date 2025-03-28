@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Thêm/Sửa Môn học</title>
 </head>
 <body>
-$END$
+<h1>Thêm/Sửa Môn học</h1>
+<form th:action="@{/subjects/save}" th:object="${subject}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label>Tên Môn học:</label> <input type="text" th:field="*{name}" required><br>
+    <button type="submit">Lưu</button>
+</form>
+<a th:href="@{/subjects}">Quay lại</a>
 </body>
 </html>

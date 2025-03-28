@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sinh Viên</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-$END$
+<header>
+    <h1>Hệ Thống Quản Lý Sinh Viên</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/students}">Sinh Viên</a></li>
+            <li><a th:href="@{/subjects}">Môn Học</a></li>
+            <li><a th:href="@{/scores}">Điểm Số</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div th:insert="~{::content}"></div>
+</main>
+
+<footer>
+    <p>© 2025 - Quản lý sinh viên</p>
+</footer>
 </body>
 </html>
